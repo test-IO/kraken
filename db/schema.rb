@@ -12,9 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170202173044) do
 
-  create_table "events", force: :cascade do |t|
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.text     "payload"
+    t.text     "payload",    limit: 65535
     t.datetime "created_at"
   end
 
