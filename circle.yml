@@ -1,4 +1,3 @@
-dependencies:
 test:
   post:
     - bundle exec rubocop -R
