@@ -1,0 +1,9 @@
+dependencies:
+test:
+  post:
+    - bundle exec rubocop -R
+deployment:
+  production:
+    branch: master
+    commands:
+      - curl -X POST -d "" https://hooks.cloud66.com/stacks/redeploy/9b019f283caa6e0bb3cdb06eb543f0fe/ef38d35c81a94c80bc1c8349bb9ffa5b
