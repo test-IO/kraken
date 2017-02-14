@@ -9,6 +9,7 @@ gem 'sidekiq'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
+  gem 'rr'
   gem 'rubocop'
 end
 

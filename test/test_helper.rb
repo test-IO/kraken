@@ -1,6 +1,10 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'rr'
+
+# Hack as RR is not autoloaded with Rails 5
+RR.adapters.find { |a| a.name == :Minitest }.load
 
 module ActiveSupport
   class TestCase

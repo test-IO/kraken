@@ -45,7 +45,7 @@ GEM
     concurrent-ruby (1.0.4)
     connection_pool (2.2.1)
     erubis (2.7.0)
-    faker (1.7.2)
+    faker (1.7.3)
       i18n (~> 0.5)
     ffi (1.9.17)
     globalid (0.3.7)
@@ -68,7 +68,7 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
-    parser (2.3.3.1)
+    parser (2.4.0.0)
       ast (~> 2.2)
     powerpack (0.1.1)
     puma (3.7.0)
@@ -106,6 +106,7 @@ GEM
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
     redis (3.3.3)
+    rr (1.2.0)
     rubocop (0.47.1)
       parser (>= 2.3.3.1, < 3.0)
       powerpack (~> 0.1)
@@ -149,6 +150,7 @@ DEPENDENCIES
   mysql2
   puma
   rails (~> 5.0.1)
+  rr
   rubocop
   sidekiq
   spring
