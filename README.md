@@ -1,24 +1,9 @@
-# README
+# Kraken
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Kafka
 
-Things you may want to cover:
+Run a kafka instance using docker and docker-compose
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+docker-compose up
+```

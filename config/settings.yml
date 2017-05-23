@@ -1,0 +1,5 @@
+kafka:
+  client_id: kraken
+  seed_brokers:
+    - 'localhost:9092'
+  topic: default

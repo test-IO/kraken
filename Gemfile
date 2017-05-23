@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.4.0'
 
+gem 'config'
 gem 'mysql2'
 gem 'puma'
 gem 'rails', '~> 5.0.1'
+gem 'ruby-kafka'
 gem 'sidekiq'
 
 group :development, :test do
