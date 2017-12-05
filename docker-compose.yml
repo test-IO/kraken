@@ -1,5 +1,8 @@
-version: '2'
+version: '3'
 services:
+  kraken:
+    build: .
+    command: bash
   kafka:
     image: ches/kafka
     environment:
