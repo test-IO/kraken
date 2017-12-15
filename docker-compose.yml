@@ -9,9 +9,9 @@ services:
       - DB_USERNAME=testio
       - KAFKA_SEED_BROKER=localhost:9092
       - RAILS_ENV=development
-      - REDIS_URL=redis
+      - REDIS_URL=redis://redis
     ports:
-      - 3000:3000
+      - '3000:3000'
     volumes:
       - ./:/app
     depends_on:
@@ -42,8 +42,6 @@ services:
       - redis_data:/data
   zookeeper:
     image: jplock/zookeeper:3.4.6
-    ports:
-      - '2181:2181'
 volumes:
   kafka_data:
   kafka_logs:

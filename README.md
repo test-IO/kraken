@@ -7,5 +7,5 @@
 docker-compose build
 
 # Run development docker
-docker-compose run kraken
+docker-compose run --service-ports kraken
 ```

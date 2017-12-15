@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 ruby '2.4.2'
 
 gem 'config'
-gem 'tzinfo-data'
 gem 'mysql2'
 gem 'puma'
 gem 'rails', '~> 5.0.1'
 gem 'ruby-kafka'
 gem 'sidekiq'
+gem 'tzinfo-data'
 
 group :development, :test do
   gem 'byebug', platform: :mri

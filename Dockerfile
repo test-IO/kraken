@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
   libreadline-dev \
   libssl-dev \
   nano \
+  tmux \
   vim \
   wget
 
