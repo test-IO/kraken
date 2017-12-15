@@ -5,7 +5,7 @@
 bundle exec rails db:setup
 
 # Start a develoment tmux session
-./scripts/start-dev-tmux.sh
+./scripts/start-development-tmux.sh
 ```
 
 ## Docker
