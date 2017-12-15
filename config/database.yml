@@ -1,0 +1,14 @@
+development: &default
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  port: <%= ENV['DB_PORT'] || 3306 %>
+  adapter: mysql2
+  database: <%= ENV['DB_DATABASE'] || 'kraken_development' %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  encoding: utf8
+  pool: 30
+  reaping_frequency: 300
+
+test:
+  <<: *default
+  database: <%= ENV['DB_TEST_DATABASE'] || 'kraken_test' %>
