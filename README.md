@@ -1,9 +1,11 @@
 # Kraken
 
-## Kafka
-
-Run a kafka instance using docker and docker-compose
+## Docker
 
 ```bash
-docker-compose up
+# Build docker images
+docker-compose build
+
+# Run development docker
+docker-compose run kraken
 ```

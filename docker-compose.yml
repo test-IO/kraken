@@ -3,20 +3,43 @@ services:
   kraken:
     build: .
     command: bash
+    environment:
+      - DB_HOST=mysql
+      - DB_PASSWORD=0UVur9l93FOBGbShNN4g
+      - DB_USERNAME=testio
+      - KAFKA_SEED_BROKER=localhost:9092
+      - RAILS_ENV=development
+      - REDIS_URL=redis
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+    depends_on:
+      - kafka
+      - mysql
+      - redis
   kafka:
     image: ches/kafka
     environment:
       - KAFKA_ADVERTISED_HOST_NAME=127.0.0.1
       - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
       - ZOOKEEPER_IP=zookeeper
-    ports:
-      - '7203:7203'
-      - '9092:9092'
     volumes:
       - kafka_data:/data
       - kafka_logs:/logs
     depends_on:
       - zookeeper
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    volumes:
+      - ./scripts/init-development-databases.sql:/docker-entrypoint-initdb.d/init-development-databases.sql
+      - mysql_data:/var/lib/mysql
+  redis:
+    image: redis
+    volumes:
+      - redis_data:/data
   zookeeper:
     image: jplock/zookeeper:3.4.6
     ports:
@@ -24,3 +47,5 @@ services:
 volumes:
   kafka_data:
   kafka_logs:
+  mysql_data:
+  redis_data:

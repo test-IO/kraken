@@ -1,5 +1,5 @@
 kafka:
   client_id: kraken
   seed_brokers:
-    - 'localhost:9092'
+    - <%= ENV['KAFKA_SEED_BROKER'] %>
   topic: default
