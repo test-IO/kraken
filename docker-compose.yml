@@ -7,7 +7,7 @@ services:
       - DB_HOST=mysql
       - DB_PASSWORD=0UVur9l93FOBGbShNN4g
       - DB_USERNAME=testio
-      - KAFKA_SEED_BROKER=localhost:9092
+      - KAFKA_SEED_BROKER=kafka:9092
       - RAILS_ENV=development
       - REDIS_URL=redis://redis
     ports:
@@ -21,9 +21,11 @@ services:
   kafka:
     image: ches/kafka
     environment:
-      - KAFKA_ADVERTISED_HOST_NAME=127.0.0.1
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
       - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
       - ZOOKEEPER_IP=zookeeper
+    extra_hosts:
+      - 'kafka:127.0.0.1'
     volumes:
       - kafka_data:/data
       - kafka_logs:/logs
