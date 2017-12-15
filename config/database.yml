@@ -9,6 +9,10 @@ development: &default
   pool: 30
   reaping_frequency: 300
 
+production:
+  <<: *default
+  database: <%= ENV['DB_TEST_DATABASE'] || 'kraken_production' %>
+
 test:
   <<: *default
   database: <%= ENV['DB_TEST_DATABASE'] || 'kraken_test' %>
