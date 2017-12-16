@@ -1,0 +1,68 @@
+# This should not be used in production, it was just to test docker swarm deployment using docker stack
+version: '3'
+services:
+  web:
+    image: simonmiaou/kraken
+    environment:
+      - DB_HOST=mysql
+      - DB_PASSWORD=0UVur9l93FOBGbShNN4g
+      - DB_USERNAME=simon
+      - KAFKA_SEED_BROKER=kafka:9092
+      - RAILS_ENV=production
+      - RAKE_ENV=production
+      - REDIS_URL=redis://redis
+      - SECRET_KEY_BASE=5d2eb60893af9aba658a9fb05fe7348f6cbf31e44a1fad93374270ed4c462f279841edcb3ef011049f24247708b0d6dfa00f84894451a87f37e8802f6865fd0f
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mysql
+      - redis
+  sidekiq:
+    image: simonmiaou/kraken
+    command: bundle exec sidekiq
+    environment:
+      - DB_HOST=mysql
+      - DB_PASSWORD=0UVur9l93FOBGbShNN4g
+      - DB_USERNAME=simon
+      - KAFKA_SEED_BROKER=kafka:9092
+      - RAILS_ENV=production
+      - RAKE_ENV=production
+      - REDIS_URL=redis://redis
+      - SECRET_KEY_BASE=5d2eb60893af9aba658a9fb05fe7348f6cbf31e44a1fad93374270ed4c462f279841edcb3ef011049f24247708b0d6dfa00f84894451a87f37e8802f6865fd0f
+    depends_on:
+      - kafka
+      - mysql
+      - redis
+  kafka:
+    image: ches/kafka
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
+      - ZOOKEEPER_IP=zookeeper
+    extra_hosts:
+      - 'kafka:127.0.0.1'
+    volumes:
+      - kafka_data:/data
+      - kafka_logs:/logs
+    depends_on:
+      - zookeeper
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_USER=simon
+      - MYSQL_PASSWORD=0UVur9l93FOBGbShNN4g
+      - MYSQL_DATABASE=kraken_production
+    volumes:
+      - mysql_data:/var/lib/mysql
+  redis:
+    image: redis
+    volumes:
+      - redis_data:/data
+  zookeeper:
+    image: jplock/zookeeper:3.4.6
+volumes:
+  kafka_data:
+  kafka_logs:
+  mysql_data:
+  redis_data:
